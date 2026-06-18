@@ -1,28 +1,28 @@
 import os
 import pytest
 
-from services.booking_service import (
-    BookingService
-)
-
-from data.booking_factory import (
-    booking_payload
-)
-
-from core.database import (
-    Database
-)
-
-from validators.db_validator import (
-    validate_booking_exists
-)
-
 
 @pytest.mark.skipif(
     os.getenv("CI") == "true",
     reason="Skip DB integration in CI"
 )
 def test_api_db_validation():
+
+    from services.booking_service import (
+        BookingService
+    )
+
+    from data.booking_factory import (
+        booking_payload
+    )
+
+    from core.database import (
+        Database
+    )
+
+    from validators.db_validator import (
+        validate_booking_exists
+    )
 
     service = BookingService()
 
@@ -34,11 +34,9 @@ def test_api_db_validation():
         )
     )
 
-    booking_id = (
-        booking[
-            "bookingid"
-        ]
-    )
+    booking_id = booking[
+        "bookingid"
+    ]
 
     db = Database(
         host="localhost",
