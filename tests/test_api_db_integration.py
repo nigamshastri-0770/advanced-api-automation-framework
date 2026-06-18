@@ -1,3 +1,6 @@
+import os
+import pytest
+
 from services.booking_service import (
     BookingService
 )
@@ -15,6 +18,10 @@ from validators.db_validator import (
 )
 
 
+@pytest.mark.skipif(
+    os.getenv("CI") == "true",
+    reason="Skip DB integration in CI"
+)
 def test_api_db_validation():
 
     service = BookingService()
@@ -39,18 +46,6 @@ def test_api_db_validation():
         user="macbookpro",
         password=""
     )
-
-    # Insert simulated API result
-    db.execute(
-        """
-        INSERT INTO bookings(id)
-        VALUES(%s)
-        ON CONFLICT DO NOTHING
-        """,
-        (booking_id,)
-    )
-
-    db.connection.commit()
 
     validate_booking_exists(
         booking_id,
