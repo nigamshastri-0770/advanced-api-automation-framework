@@ -1,0 +1,20 @@
+dev:
+  booking:
+    base_url: https://restful-booker.herokuapp.com
+
+  reqres:
+    base_url: https://reqres.in/api
+
+qa:
+  booking:
+    base_url: https://restful-booker.herokuapp.com
+
+  reqres:
+    base_url: https://reqres.in/api
+
+prod:
+  booking:
+    base_url: https://restful-booker.herokuapp.com
+
+  reqres:
+    base_url: https://reqres.in/api

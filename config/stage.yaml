@@ -1,0 +1,11 @@
+jsonplaceholder:
+  base_url: https://jsonplaceholder.typicode.com
+
+booking:
+  base_url: https://restful-booker.herokuapp.com
+
+reqres:
+  base_url: https://reqres.in/api
+
+httpbin:
+  base_url: https://httpbin.org
