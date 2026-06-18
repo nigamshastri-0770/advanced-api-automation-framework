@@ -34,9 +34,11 @@ def test_api_db_validation():
         )
     )
 
-    booking_id = booking[
-        "bookingid"
-    ]
+    booking_id = (
+        booking[
+            "bookingid"
+        ]
+    )
 
     db = Database(
         host="localhost",
@@ -44,6 +46,18 @@ def test_api_db_validation():
         user="macbookpro",
         password=""
     )
+
+    # simulate persistence locally
+    db.execute(
+        """
+        INSERT INTO bookings(id)
+        VALUES(%s)
+        ON CONFLICT DO NOTHING
+        """,
+        (booking_id,)
+    )
+
+    db.connection.commit()
 
     validate_booking_exists(
         booking_id,

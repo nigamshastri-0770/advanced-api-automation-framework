@@ -34,16 +34,17 @@ class Database:
         )
 
         try:
-            rows = cursor.fetchall()
+            result = cursor.fetchall()
 
         except Exception:
-            rows = []
+            result = []
 
         cursor.close()
 
-        return rows
+        return result
 
     def close(self):
 
         if self.connection:
+
             self.connection.close()
